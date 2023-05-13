@@ -1,12 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <!--   <script src="https://lib.sinaapp.com/js/jquery/2.0.2/jquery-2.0.2.min.js"></script>-->
+    <style>
+    </style>
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        resultObj={
+            '1':[],
+            '2':[],
+        };
+
+        function changeResultObj(content,id){
+
+            let resObjVal=resultObj[id];
+ 
+                resObjVal.push(content);
+ 
+        }
+
+        function hailGuess(inputStr,id){
+       
+           let  x =parseInt(inputStr);
+            while(x != 1){
+                if(x%2 == 0){
+                    changeResultObj(`${x}/2=${x/2}`,id);
+                x = x/2;//如果是偶数就析出偶数因数2ⁿ
+               
+                
+                }
+                 else{
+                    changeResultObj(`${x}*3+1=${x*3+1}`,id);
+                 x = x*3+1;//如果是奇数就乘以3再加1
+                 
+                 
+                }
+            }
+        }
+
+        function compute(inputStr,id){
+            let evalVal= eval(inputStr);
+            changeResultObj(evalVal,id);
+
+        }
+
+        $(document).ready(function () {
+
+              $(":button").click(function (){
+                  let parent =$(this).parent()
+                  let id= parent.attr('id');
+                  let inputStr =parent.find(":text").val();
+
+             
+                  if(id==1){
+                    compute(inputStr,id);
+                  }else if(id==2){
+                    hailGuess(inputStr,id);
+                  }
+                  let res =resultObj[id].join("</br>");
+                  resultObj[id].length=0;
+                  parent.find("[name=result]").html(res);
+              })
+        });
+    </script>
 </head>
+
 <body>
-    你好，这是我的测试页面。
+<div id="1">
+    <h5>表达式计算器</h5>
+    <span></span><input type="text" placeholder="3+2*2+1/2"/>
+    <button>计算</button><button>清除</button>
+    <p name="result"></p>
+</div>
+<div id="2">
+    <h5>冰雹猜想</h5>
+    <span></span><input type="text" placeholder="6"/>
+    <button>计算</button><button>清除</button>
+    <p name="result"></p>
+</div>
 </body>
+
 </html>
