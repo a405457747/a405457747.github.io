@@ -73,7 +73,7 @@
 
         $(document).ready(function () {
 
-              $(":button").click(function (){
+              $(":button[class=btn1]").click(function (){
                   let parent =$(this).parent()
                   let id= parent.attr('id');
                   let inputStr =parent.find(":text").val();
@@ -138,14 +138,14 @@
 <h4>表达式计算器</h4>
 <div id="1">    
     <span></span><input type="text" placeholder="3+2*2+1/2"/>
-    <button>计算</button><button>清除</button>
+    <button class="btn1">计算</button>&nbsp;<button>清空</button>
     <p name="result"></p>
 </div>
 
 <h4>冰雹猜想</h4>
 <div id="2">    
     <span></span><input type="text" placeholder="6"/>
-    <button>计算</button><button>清除</button>
+    <button class="btn1">计算</button>&nbsp;<button>清空</button>
     <p name="result"></p>
 </div>
 
