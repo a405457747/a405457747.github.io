@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>姚天能个人主页</title>
+    <link rel="icon" href="./favicon.ico">
+
+
+    <!-- <script src="https://lib.sinaapp.com/js/jquery/2.0.2/jquery-2.0.2.min.js"></script> -->
+    <style>
+        
+        h4{
+            color: black;
+        }
+        h3{
+            color:darkblue;
+        }
+        h2{
+            color:black;
+            /* background-image: url("./1.png");
+            background-size: 10%; */
+        }
+
+        #bg {
+           
+            width: 30px;
+            height: auto;
+        }
+
+    </style>
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        resultObj={
+            '1':[],
+            '2':[],
+        };
+
+        function changeResultObj(content,id){
+
+            let resObjVal=resultObj[id];
+ 
+                resObjVal.push(content);
+ 
+        }
+
+        function hailGuess(inputStr,id){
+       
+           let  x =parseInt(inputStr);
+            while(x != 1){
+                if(x%2 == 0){
+                    changeResultObj(`${x}/2=${x/2}`,id);
+                x = x/2;//如果是偶数就析出偶数因数2ⁿ
+               
+                
+                }
+                 else{
+                    changeResultObj(`${x}*3+1=${x*3+1}`,id);
+                 x = x*3+1;//如果是奇数就乘以3再加1
+                 
+                 
+                }
+            }
+        }
+
+        function compute(inputStr,id){
+            let evalVal= eval(inputStr);
+            changeResultObj(evalVal,id);
+
+        }
+
+        $(document).ready(function () {
+
+              $(":button[class=btn1]").click(function (){
+                  let parent =$(this).parent()
+                  let id= parent.attr('id');
+                  let inputStr =parent.find(":text").val();
+
+             
+                  if(id==1){
+                    compute(inputStr,id);
+                  }else if(id==2){
+                    hailGuess(inputStr,id);
+                  }
+                  let res =resultObj[id].join("</br>");
+                  resultObj[id].length=0;
+                  parent.find("[name=result]").html(res);
+              })
+
+              $( "#myElement" ).scrollTop( 300 );
+        });
+    </script>
+</head>
+<body>
+
+
+
+
+<h2>欢迎来到姚天能个人主页</h2>
+
+
+<h3>本人简介</h3>
+<h4>基本信息</h4>
+<p>年龄：31</p>
+<p>性别：男</p>
+<p>籍贯：内江隆昌市</p>
+<p>现居：成都金牛区</p>
+<p>职业：数学老师</p>
+<p>微信：894982165</p>
+<p>邮箱：894982165@qq.com</p>
+
+<h4>主要教育经历</h4>
+<p>2011-2014 重庆工程学院 | 计算机系统维护</p>
+
+<h4>主要工作经历</h4>
+<p>2018-2021 呼友猫游戏工作室 | 游戏开发工程师</p>
+<p>2021-2022 成都臻点互娱科技有限公司 | 游戏开发工程师</p>
+
+<h4>主要项目作品</h4>
+<div><a href="https://www.taptap.cn/app/164554/review" target="_blank">点击塔防 </a></div>
+<div><a href="https://play.google.com/store/apps/details?id=com.superwinslots.gp.slotsmaster target="_blank"">SlotsMaster</a></div>
+
+<h4>擅长优势</h4>
+<p>知识笔记可视化、科学数学学习、软件工程技术</p>
+
+<h4>感兴趣方向</h4>
+<p>图形几何、游戏编程</p>
+
+<h4>博客媒体</h4>
+<div><a href="https://zhuanlan.zhihu.com/p/626551118" target="_blank">知乎文章：初中基础数学笔记</a></div>
+<div><a href="https://www.toutiao.com/video/7229952916931641856/?from_scene=video&log_from=3bd9239755134_1684205631385" target="_blank">今日头条视频：奥数思维前置课</a></div>
+
+<h4>座右铭</h4>
+<p>鼓励批评，都是幸事</p>
+<p>日拱一卒，知足常乐</p>
+
+<h3>数学游戏</h3>
+<h4>表达式计算器</h4>
+<div id="1">    
+    <span></span><input type="text" placeholder="3+2*2+1/2"/>
+    <button class="btn1">计算</button>&nbsp;<button>清空</button>
+    <p name="result"></p>
+</div>
+
+<h4>冰雹猜想</h4>
+<div id="2">    
+    <span></span><input type="text" placeholder="6"/>
+    <button class="btn1">计算</button>&nbsp;<button>清空</button>
+    <p name="result"></p>
+</div>
+
+
+<h3>知识体系</h3>
+<h4>糖豆脑图</h4>
+<div><a href="./ScienceData.html" target="_blank">理科知识</a></div>
+
+
+
+<!-- <audio controls>
+<source src="http://dict.youdao.com/dictvoice?type=0&audio=king" >
+</audio>
+<div style="border: 2px solid #D5CC5A; overflow: hidden; margin: 15px auto; max-width: 575px;">
+    <iframe scrolling="no" src="https://www.xxenglish.com/wd/apple" style="border: 0px none; margin-left: -36px; height: 812px; margin-top: -486px; width: 650px;">
+    </iframe>
+</div> -->
+<!-- <div class="content">
+    <iframe id="myElement" src="" frameborder="0"  scrolling="20px" class="po" width="350px" height="350px">
+      <p>您的浏览器不支持  iframe 标签。</p>
+    </iframe>
+    </div> -->
+<!-- <script>
+    var element = document.getElementById('myElement'); 
+    element.scrollTop = 100; 
+</script> -->
+</body>
+</html>
